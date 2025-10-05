@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ClassQR Logo](./assets/icon.png)
+![ClassQR Logo](./assets/ClassQR-logo.png)
 
 **A modern, location-verified QR-based attendance system built with React Native & Firebase**
 
@@ -319,6 +319,8 @@ EXPO_PUBLIC_APP_VERSION=1.0.0
 - ✅ Use `EXPO_PUBLIC_` prefix for client-side variables
 - ✅ Never commit actual `.env` file to version control
 - ✅ Use `.env.example` to document required variables
+
+📖 **Need help setting up environment variables?** See the detailed [Environment Setup Guide](docs/ENVIRONMENT_SETUP.md)
 
 ---
 
