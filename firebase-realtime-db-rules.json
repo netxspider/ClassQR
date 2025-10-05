@@ -1,0 +1,17 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "qr-sessions": {
+      "$sessionId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "scannedStudents": {
+          "$studentId": {
+            ".write": "auth != null"
+          }
+        }
+      }
+    }
+  }
+}
