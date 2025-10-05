@@ -53,13 +53,22 @@ ClassQR is a comprehensive mobile attendance management system that combines QR 
    npm install
    ```
 
-3. **Configure Firebase**
-   - Create a new Firebase project
-   - Enable Authentication, Firestore, and Realtime Database
-   - Download `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
-   - Update Firebase configuration in `config/firebase.js`
+3. **Configure Environment Variables**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env with your Firebase credentials
+   nano .env
+   ```
 
-4. **Start the development server**
+4. **Configure Firebase**
+   - Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
+   - Enable Authentication, Firestore, and Realtime Database
+   - Copy your Firebase config values to the `.env` file
+   - Download `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) if needed
+
+5. **Start the development server**
    ```bash
    npx expo start
    ```
@@ -270,6 +279,46 @@ service cloud.firestore {
   }
 }
 ```
+
+---
+
+## 🔐 **Environment Variables**
+
+ClassQR uses environment variables to securely store Firebase configuration and other sensitive data.
+
+### **Required Environment Variables**
+
+Copy `.env.example` to `.env` and fill in your Firebase project details:
+
+```bash
+# Firebase Configuration (Required)
+EXPO_PUBLIC_API_KEY=your_firebase_api_key
+EXPO_PUBLIC_AUTH_DOMAIN=your_project_id.firebaseapp.com
+EXPO_PUBLIC_DATABASE_URL=https://your_project_id-default-rtdb.region.firebasedatabase.app
+EXPO_PUBLIC_PROJECT_ID=your_firebase_project_id
+EXPO_PUBLIC_STORAGE_BUCKET=your_project_id.firebasestorage.app
+EXPO_PUBLIC_MESSAGING_SENDER_ID=your_messaging_sender_id
+EXPO_PUBLIC_APP_ID=your_firebase_app_id
+EXPO_PUBLIC_MEASUREMENT_ID=your_google_analytics_measurement_id
+
+# App Configuration (Optional)
+EXPO_PUBLIC_APP_NAME=ClassQR
+EXPO_PUBLIC_APP_VERSION=1.0.0
+```
+
+### **Getting Firebase Values**
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Select your project → Settings ⚙️ → Project settings
+3. Scroll to "Your apps" → Web apps → Config
+4. Copy the values from `firebaseConfig` object
+
+### **Security Notes**
+
+- ✅ `.env` is in `.gitignore` (secrets won't be committed)
+- ✅ Use `EXPO_PUBLIC_` prefix for client-side variables
+- ✅ Never commit actual `.env` file to version control
+- ✅ Use `.env.example` to document required variables
 
 ---
 

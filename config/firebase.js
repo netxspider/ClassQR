@@ -3,18 +3,15 @@ import { getAuth, initializeAuth, getReactNativePersistence } from 'firebase/aut
 import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getFirebaseConfig, logConfigStatus } from './environment';
 
-// Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyAYTBHuWmrEeDTdBQDFLLyUJtqk1L6OPbI",
-  authDomain: "classqr-d744c.firebaseapp.com",
-  databaseURL: "https://classqr-d744c-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "classqr-d744c",
-  storageBucket: "classqr-d744c.firebasestorage.app",
-  messagingSenderId: "87963962135",
-  appId: "1:87963962135:web:1c1102d70587ce31470552",
-  measurementId: "G-3PYSZLF4EW"
-};
+// Get Firebase configuration from environment variables
+const firebaseConfig = getFirebaseConfig();
+
+// Log configuration status in development
+logConfigStatus();
+
+console.log('🔥 Firebase initialized with environment variables');
 
 // Initialize Firebase
 let app;
