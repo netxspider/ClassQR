@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import SDashboard from '../Student/SDashboard';
+import VDashboard from '../Volunteer/VDashboard';
 import TDashboard from '../Teacher/TDashboard';
 import AttendanceScreen from '../Teacher/AttendanceScreen';
 import ScanQRScreen from '../Student/ScanQRScreen';
@@ -30,7 +30,7 @@ const BottomTabNavigation = ({ role }) => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: role === 'teacher' ? '#27ae60' : '#3498db',
+        tabBarActiveTintColor: role === 'admin' ? '#27ae60' : role === 'volunteer' ? '#e74c3c' : '#3498db',
         tabBarInactiveTintColor: '#95a5a6',
         tabBarStyle: {
           backgroundColor: 'white',
@@ -46,15 +46,21 @@ const BottomTabNavigation = ({ role }) => {
         },
       })}
     >
-      {role === 'teacher' ? (
+      {role === 'admin' ? (
         <>
           <BottomTabs.Screen name="Dashboard" component={TDashboard} />
           <BottomTabs.Screen name="Attendance" component={AttendanceScreen} />
           <BottomTabs.Screen name="Profile" component={ProfileScreen} />
         </>
+      ) : role === 'volunteer' ? (
+        <>
+          <BottomTabs.Screen name="Dashboard" component={VDashboard} />
+          <BottomTabs.Screen name="Scan QR" component={SimpleScanQRScreen} />
+          <BottomTabs.Screen name="Profile" component={ProfileScreen} />
+        </>
       ) : (
         <>
-          <BottomTabs.Screen name="Dashboard" component={SDashboard} />
+          <BottomTabs.Screen name="Dashboard" component={VDashboard} />
           <BottomTabs.Screen name="Scan QR" component={SimpleScanQRScreen} />
           <BottomTabs.Screen name="Profile" component={ProfileScreen} />
         </>
