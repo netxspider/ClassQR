@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '../context/AuthContext';
 import AuthScreen from '../pages/AuthScreen';
 import BottomTabNavigation from './BottomTabNavigation';
-import DrawerNavigation from './DrawerNavigation';
 import MarkAttendanceScreen from '../Teacher/MarkAttendanceScreen';
 
 const StackNavigation = () => {
@@ -25,7 +24,7 @@ const StackNavigation = () => {
       {user ? (
         <>
           <Stack.Screen name="Main" options={{ headerShown: false }}>
-            {() => userRole === 'volunteer' ? <DrawerNavigation /> : <BottomTabNavigation role={userRole} />}
+            {() => <BottomTabNavigation role={userRole} />}
           </Stack.Screen>
           <Stack.Screen 
             name="MarkAttendance" 
